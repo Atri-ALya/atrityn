@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <link rel="icon" href="icon.png" type="image/png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+    --background-color-dark: #101010;
+    --text-color-dark: #e5e5e5;
+    --background-color-light: #ffffff;
+    --text-color-light: #0a0a0a;
+    --primary-color: #3498db;
+    --secondary-color: #e74c3c;
+    --arrow-color-dark: #e5e5e5;
+    --arrow-color-light: #0a0a0a;
+    --subtitle-gray-dark: #C0C0C0;
+    --subtitle-gray-light: #C0C0C0;
+
+    /* Переменные для цвета рамки и текста .rounded-border */
+    --border-color-dark: #FFFFFF;
+    --text-color-dark-rounded: #FFFFFF;
+    --border-color-light: #000000;
+    --text-color-light-rounded: #000000;
+}
+
+.no-select {
+    user-select: none; /* Отключение выделения текста */
+    -webkit-user-select: none; /* Для поддержки WebKit-браузеров */
+    -moz-user-select: none; /* Для поддержки Firefox */
+    -ms-user-select: none; /* Для поддержки старых IE */
+}
+
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+    transition: background-color 0.8s, color 0.8s;
+    overflow: hidden;
+}
+
+body.light-theme {
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+}
+
+/* Стили для контейнера элемента */
+.container {
+    position: relative; /* Убедитесь, что контейнер относительно позиционирован */
+}
+
+.rounded-border {
+    display: inline-block; /* Делает элемент блочным внутри строки */
+    padding: 5px 10px; /* Внутренние отступы вокруг текста */
+    border: 1px solid var(--border-color-dark); /* Цвет рамки в зависимости от темы */
+    border-radius: 12px; /* Закругление углов */
+    font-weight: bold; /* Жирный шрифт */
+    color: var(--text-color-dark-rounded); /* Цвет текста в зависимости от темы */
+    background-color: transparent; /* Фон элемента (может быть изменен) */
+    position: absolute; /* Или relative, если необходимо перемещение */
+}
+
+#span1 {
+    top: -55px;
+    left: -595px;
+}
+
+#span2 {
+    top: -55px;
+    left: -510px; /* Расположение немного дальше от первого span */
+}
+
+#span3 {
+    top: -55px;
+    left: -397px; /* Расположение немного дальше от второго span */
+}
+
+#span4 {
+    top: -55px;
+    left: -320px; /* Расположение немного дальше от третьего span */
+}
+
+#span5 {
+    top: 160px;
+    left: -595px;
+}
+
+#span6 {
+    top: 160px;
+    left: -517px;
+}
+
+#span7 {
+    top: 160px;
+    left: -415px;
+}
+
+#span8 {
+    top: 160px;
+    left: -260px;
+}
+
+#span9 {
+    top: 200px;
+    left: -595px;
+}
+
+#span10 {
+    top: 200px;
+    left: -517px;
+}
+
+#span11 {
+    top: 200px;
+    left: -415px;
+}
+
+#span12 {
+    top: 200px;
+    left: -285px;
+}
+
+/* Стили для светлой темы */
+body.light-theme .rounded-border {
+    border: 1px solid var(--border-color-light);
+    color: var(--text-color-light-rounded);
+}
+
+/* Стили для светлой темы */
+body.light-theme .rounded-border {
+    border: 1px solid var(--border-color-light);
+    color: var(--text-color-light-rounded);
+}
+
+/* Остальные стили */
+.nav-container {
+    position: fixed;
+    top: 20px;
+    left: 100px;
+    right: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.8s ease;
+}
+
+        .nav-left {
+            font-size: 2em;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 60px;
+            margin-right: 40px;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .nav-right.hidden {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .nav-link {
+            font-size: 1.2em;
+            font-weight: 400;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .nav-link:hover {
+            opacity: 0.5;
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 10px solid var(--arrow-color-dark);
+            margin-right: 10px;
+            transition: border-bottom-color 0.8s;
+        }
+
+        body.light-theme .arrow {
+            border-bottom-color: var(--arrow-color-light);
+        }
+
+        .section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 60px;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 1s ease, transform 1s ease, filter 1s ease;
+            transform: scale(0.98);
+            filter: blur(4px);
+            z-index: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .section.active {
+            opacity: 1;
+            z-index: 1;
+            transform: scale(1);
+            filter: blur(0px);
+        }
+
+        .section.inactive {
+            z-index: -1;
+        }
+
+        .title,
+        .subtitle,
+        .text-block {
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .title.visible,
+        .subtitle.visible,
+        .text-block.visible {
+            opacity: 1;
+        }
+        .rounded-border {
+            display: inline-block; /* Делает элемент блочным внутри строки */
+            padding: 5px 10px; /* Внутренние отступы вокруг текста */
+            border: 1px solid #FFFFFF; /* Толщина и цвет рамки */
+            border-radius: 12px; /* Закругление углов */
+            font-weight: bold; /* Жирный шрифт */
+            color: #FFFFFF; /* Цвет текста */
+            background-color: transparent; /* Фон элемента (может быть изменен) */
+
+        }
+
+
+        /* Custom title and subtitle sizes for different sections */
+        #home .title {
+            font-size: 3.5em;
+            font-weight: 700;
+        }
+
+        #home .subtitle {
+            font-size: 1.5em;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+
+        #about .title {
+            font-size: 2.5em;
+            font-weight: 700;
+            position: absolute;
+            top: 100px;
+            left: 400px;
+            text-align: left;
+        }
+
+        #about .subtitle {
+            font-size: 1.3em;
+            font-weight: 400;
+            position: absolute;
+            top: 150px;
+            left: 350px;
+            text-align: left;
+        }
+
+        #about .studying-title {
+            font-size: 2em;
+            font-weight: 700;
+            position: absolute;
+            top: 300px;
+            left: 350px;
+            text-align: left;
+        }
+
+        #about .studying-text {
+            font-size: 1.3em;
+            font-weight: 400;
+            position: absolute;
+            top: 350px;
+            left: 350px;
+            text-align: left;
+        }
+
+        #about .software-title {
+    font-size: 2em;
+    font-weight: 700;
+    position: absolute;
+    top: 520px; /* Измените, чтобы переместить заголовок вертикально */
+    left: 350px; /* Измените, чтобы переместить заголовок горизонтально */
+    text-align: left;
+}
+
+#about .software-text {
+    font-size: 1.3em;
+    font-weight: 400;
+    position: absolute;
+    top: 570px; /* Измените, чтобы переместить текст вертикально */
+    left: 350px; /* Измените, чтобы переместить текст горизонтально */
+    text-align: left;
+}
+
+#about-me {
+    position: relative;
+    padding: 20px;
+}
+
+video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    transition: opacity 0.8s ease;
+    pointer-events: none; /* Запрещаем взаимодействие с видео */
+}
+
+#dark-theme-video {
+    display: block;
+    opacity: 1;
+}
+
+#light-theme-video {
+    display: none;
+    opacity: 0;
+}
+
+body.light-theme #dark-theme-video {
+    opacity: 0;
+    display: none;
+}
+
+body.light-theme #light-theme-video {
+    opacity: 1;
+    display: block;
+}
+
+
+#my-photos {
+    display: block;
+    width: 850px !important; /* Ширина фотографии */
+    height: 500px !important; /* Автоматически подстраиваем высоту */
+    border-radius: 0px 0px 0px 60px; /* Закругление в порядке: верхний левый, верхний правый, нижний правый, нижний левый углы */
+    position: absolute;
+    top: 225px; /* Позиционирование сверху */
+    right: 0px; /* Позиционирование справа */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для фотографии */
+    
+       } 
+
+#my-photo {
+    display: block;
+    width: 850px !important; /* Ширина фотографии */
+    height: 500px !important; /* Автоматически подстраиваем высоту */
+    border-radius: 0px 0px 0px 60px; /* Закругление в порядке: верхний левый, верхний правый, нижний правый, нижний левый углы */
+    position: absolute;
+    top: 225px; /* Позиционирование сверху */
+    right: 0px; /* Позиционирование справа */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для фотографии */
+    
+       } 
+
+    #my-photoos {
+    display: block;
+    width: 72px !important; /* Ширина фотографии */
+    height: 72px !important; /* Автоматически подстраиваем высоту */
+    position: absolute;
+    top: 90px; /* Позиционирование сверху */
+    right: 1475px; /* Позиционирование справа */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для фотографии */
+    
+       } 
+
+
+    .portfolio-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 150px;  /* Смещаем ниже */
+    padding-left: 300px; /* Смещаем правее */
+}
+
+.portfolio-item {
+    transition: all 0.5s ease;
+    overflow: hidden;
+    margin: 0 10px;
+    flex-shrink: 0;
+}
+
+/* Большая версия - начальное состояние */
+#item1.active {
+    width: 1100px;
+    height: 700px;
+    border-radius: 100px 0px 100px 0px; /* Углы: TL TR BR BL */
+}
+
+#item2.active {
+    width: 1100px;
+    height: 700px;
+    border-radius: 0px 0px 100px 0px; /* Углы: TL TR BR BL */
+}
+
+#item3.active {
+    width: 1100px;
+    height: 700px;
+    border-radius: 0px 0px 100px 0px; /* Углы: TL TR BR BL */
+}
+
+/* Маленькая версия - начальное состояние */
+#item1:not(.active) {
+    width: 130px;
+    height: 700px;
+    border-radius: 100px 0px 0px 0px; /* Углы: TL TR BR BL */
+}
+
+#item2:not(.active) {
+    width: 130px;
+    height: 700px;
+    border-radius: 0px 0px 0px 0px; /* Углы: TL TR BR BL */
+}
+
+#item3:not(.active) {
+    width: 130px;
+    height: 700px;
+    border-radius: 0px 0px 100px 0px; /* Углы: TL TR BR BL */
+}
+
+/* Настройка изображений */
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit; /* Наследуем скругление от контейнера */
+}
+
+#item1:hover {
+    border-radius: 100px 0px 100px 0px; /* Углы: TL TR BR BL */
+}
+
+#item2:hover {
+    border-radius: 0px 0px 100px 0px; /* Углы: TL TR BR BL */
+}
+
+#item3:hover {
+    border-radius: 0px 0px 100px 0px; /* Углы: TL TR BR BL */
+}
+
+
+
+        #portfolio .title {
+            font-size: 2.5em;
+            font-weight: 700;
+            position: absolute;
+            top: 100px;
+            left: 400px;
+            text-align: left;
+        }
+
+        #portfolio .subtitle {
+            font-size: 1.2em;
+            font-weight: 400;
+            opacity: 0.7;
+            position: absolute;
+            top: 150px;
+            left: 400px;
+            text-align: left;
+        }
+         
+        .portfolio-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+        .text-block {
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: opacity 0.3s;
+        }
+
+        .text-block:hover {
+            opacity: 0.5;
+        }
+
+        .subtitle-gray {
+            font-size: 17.5px;
+            color: var(--subtitle-gray-dark);
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        body.light-theme .subtitle-gray {
+            color: var(--subtitle-gray-light);
+        }
+
+        .side-nav {
+            position: fixed;
+            left: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .nav-arrow-link {
+            font-size: 1.2em;
+            font-weight: 400;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-arrow-link:hover {
+            opacity: 0.5;
+        }
+
+        ::selection {
+            background: none;
+        }
+
+        #about,
+        #portfolio,
+        #contact {
+            background-image: url('back2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .icon {
+            width: 33px;
+            height: 33px;
+            transition: filter 0.8s;
+            user-select: none;
+        }
+
+        body:not(.light-theme) #theme-icon {
+            filter: invert(100%);
+        }
+
+        body.light-theme #theme-icon {
+            filter: invert(0%);
+        }
+
+        .theme-toggle-button {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            border-radius: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            box-shadow: none;
+        }
+
+        .theme-toggle-button:focus {
+            outline: none;
+        }
+
+        .language-toggle-button {
+            position: fixed;
+            right: 10px;
+            top: 70px;
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: var(--text-color-dark);
+            transition: color 0.3s;
+        }
+
+        .language-toggle-button:hover {
+            color: var(--primary-color);
+        }
+
+        subtitle-gray {
+            font-size: 17.5px;
+            color: var(--subtitle-gray-dark);
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        body.light-theme .subtitle-gray {
+            color: var(--subtitle-gray-light);
+        }
+
+        #language-icon {
+            width: 33px;
+            height: 33px;
+            transition: filter 0.8s;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        body.light-theme #language-icon {
+            filter: invert(0%);
+        }
+
+        body:not(.light-theme) #language-icon {
+            filter: invert(100%);
+        }
+
+        .language-toggle-button:focus {
+            outline: none;
+        }
+
+        #media {
+            display: none; /* Скрываем элемент, так как он нам не нужен на странице */
+        }
+
+        .rounded-border1 {
+    display: inline-block; /* Делает элемент блочным внутри строки */
+    padding: 5px 10px; /* Внутренние отступы вокруг текста */
+    border: 1px solid white;
+    border-radius: 12px; /* Закругление углов */
+    font-weight: bold; /* Жирный шрифт */
+    color: white;
+    background-color: transparent; /* Фон элемента (может быть изменен) */
+    position: absolute; /* Или relative, если необходимо перемещение */
+    transition: opacity 0.5s ease;
+}
+
+.rounded-border2 {
+    display: inline-block; /* Делает элемент блочным внутри строки */
+    padding: 5px 10px; /* Внутренние отступы вокруг текста */
+    border: 1px solid white;
+    border-radius: 12px; /* Закругление углов */
+    font-weight: bold; /* Жирный шрифт */
+    color: white;
+    background-color: transparent; /* Фон элемента (может быть изменен) */
+    position: absolute; /* Или relative, если необходимо перемещение */
+    transition: opacity 0.5s ease;
+}
+
+.rounded-border3 {
+    display: inline-block; /* Делает элемент блочным внутри строки */
+    padding: 5px 10px; /* Внутренние отступы вокруг текста */
+    border: 1px solid white;
+    border-radius: 12px; /* Закругление углов */
+    font-weight: bold; /* Жирный шрифт */
+    color: white;
+    background-color: transparent; /* Фон элемента (может быть изменен) */
+    position: absolute; /* Или relative, если необходимо перемещение */
+    transition: opacity 0.5s ease;
+}
+
+/* Видимость текста на большой версии */
+.portfolio-item.active .concept-text {
+opacity: 1; /* Показываем текст */
+}
+
+.portfolio-item.active .concept-title {
+ opacity: 1; /* Показываем текст */
+
+}
+
+.portfolio-item.active .rounded-border1 {
+ opacity: 1; /* Показываем текст */
+
+}
+
+.portfolio-item.active .cod-text {
+opacity: 1; /* Показываем текст */
+}
+
+.portfolio-item.active .cod-title {
+ opacity: 1; /* Показываем текст */
+
+}
+
+.portfolio-item.active .rounded-border2 {
+ opacity: 1; /* Показываем текст */
+
+}
+
+.portfolio-item.active .ready-text {
+opacity: 1; /* Показываем текст */
+}
+
+.portfolio-item.active .ready-title {
+ opacity: 1; /* Показываем текст */
+
+}
+
+.portfolio-item.active .rounded-border3 {
+ opacity: 1; /* Показываем текст */
+
+}
+
+.portfolio-item:not(.active) .concept-text {
+    opacity: 0; /* Скрываем текст */
+}
+
+.portfolio-item:not(.active) .concept-title {
+    opacity: 0; /* Скрываем текст */
+}
+
+.portfolio-item:not(.active) .rounded-border1 {
+    opacity: 0; /* Скрываем текст */
+}
+
+.portfolio-item:not(.active) .cod-text {
+    opacity: 0; /* Скрываем текст */
+}
+
+.portfolio-item:not(.active) .cod-title {
+    opacity: 0; /* Скрываем текст */
+}
+
+.portfolio-item:not(.active) .rounded-border2 {
+    opacity: 0; /* Скрываем текст */
+}
+
+.portfolio-item:not(.active) .ready-text {
+    opacity: 0; /* Скрываем текст */
+}
+
+.portfolio-item:not(.active) .ready-title {
+    opacity: 0; /* Скрываем текст */
+}
+
+.portfolio-item:not(.active) .rounded-border3 {
+    opacity: 0; /* Скрываем текст */
+}
+
+#span13 {
+    top: 860px;
+    left: 430px;
+}
+
+#span14 {
+    top: 860px;
+    left: 580px;
+}
+
+#span15 {
+    top: 860px;
+    left: 760px;
+}
+
+#span16 {
+    top: 860px;
+    left: 730px;
+}
+
+#span17 {
+    top: 860px;
+    left: 810px;
+}
+
+#span18 {
+    top: 860px;
+    left: 902px;
+}
+
+        
+        #portfolio .concept-title {
+            font-size: 2em;
+            font-weight: 700;
+            position: absolute;
+            top: 780px;
+            left: 430px;
+            text-align: left;
+            color: #FFFFFF;
+            transition: opacity 0.5s ease;
+        }
+
+        #portfolio .concept-text {
+            font-size: 1em;
+            font-weight: 700;
+            position: absolute;
+            top: 825px;
+            left: 430px;
+            text-align: left;
+            color: silver;
+            transition: opacity 0.5s ease;
+        }
+
+        #portfolio .cod-title {
+            font-size: 2em;
+            font-weight: 700;
+            position: absolute;
+            top: 780px;
+            left: 580px;
+            text-align: left;
+            color: #FFFFFF;
+            transition: opacity 0.5s ease;
+            
+        }
+
+        #portfolio .cod-text {
+            font-size: 1em;
+            font-weight: 700;
+            position: absolute;
+            top: 825px;
+            left: 580px;
+            text-align: left;
+            color: silver;
+            transition: opacity 0.5s ease;
+        }
+
+        #portfolio .ready-title {
+            font-size: 2em;
+            font-weight: 700;
+            position: absolute;
+            top: 780px;
+            left: 730px;
+            text-align: left;
+            color: #FFFFFF;
+            transition: opacity 0.5s ease;
+        }
+
+        #portfolio .ready-text {
+            font-size: 1em;
+            font-weight: 700;
+            position: absolute;
+            top: 825px;
+            left: 730px;
+            text-align: left;
+            color: silver;
+            transition: opacity 0.5s ease;
+        }
+
+    #extra-content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s, max-height 0.5s;
+    height: 2000px; /* Увеличьте высоту, чтобы создать необходимость в прокрутке */
+    background: linear-gradient(to bottom, #f0f0f0, #c0c0c0);
+}
+
+/* styles.css */
+.rounded-border4 {
+    position: relative; /* Фиксированное позиционирование */
+    top: -222px; /* Отступ от верхнего края */
+    left: -425px; /* Отступ от левого края */
+    display: inline-block; /* Делает элемент блочным внутри строки */
+    padding: 5px 10px; /* Внутренние отступы вокруг текста */
+    border: 1px solid #42aaff; /* Белая рамка вокруг элемента */
+    border-radius: 12px; /* Закругление углов */
+    font-weight: bold; /* Жирный шрифт */
+    color: #42aaff; /* Цвет текста */
+    background-color: transparent; /* Прозрачный фон (можно изменить на любой другой цвет) */
+    position: relative; /* Или absolute, если нужно позиционирование */
+    transition: opacity 0.5s ease; /* Плавный переход для opacity */
+    cursor: pointer; /* Курсор в виде указателя для интерактивности */
+}
+
+.rounded-border4:hover {
+    color: #00bfff; /* Изменение цвета текста при наведении */
+    border-color: #00bfff; /* Изменение цвета рамки при наведении */
+}
+
+.rounded-border5 {
+    position: relative; /* Фиксированное позиционирование */
+    top: -227px; /* Отступ от верхнего края */
+    left: -460px; /* Отступ от левого края */
+    display: inline-block; /* Делает элемент блочным внутри строки */
+    padding: 5px 10px; /* Внутренние отступы вокруг текста */
+    border: 1px solid #42aaff; /* Белая рамка вокруг элемента */
+    border-radius: 12px; /* Закругление углов */
+    font-weight: bold; /* Жирный шрифт */
+    color: #42aaff; /* Цвет текста */
+    background-color: transparent; /* Прозрачный фон (можно изменить на любой другой цвет) */
+    position: relative; /* Или absolute, если нужно позиционирование */
+    transition: opacity 0.5s ease; /* Плавный переход для opacity */
+    cursor: pointer; /* Курсор в виде указателя для интерактивности */
+}
+
+.rounded-border5:hover {
+    color: #00bfff; /* Изменение цвета текста при наведении */
+    border-color: #00bfff; /* Изменение цвета рамки при наведении */
+}
+
+.rounded-border6 {
+    position: relative; /* Фиксированное позиционирование */
+    top: -317px; /* Отступ от верхнего края */
+    left: -115px; /* Отступ от левого края */
+    display: inline-block; /* Делает элемент блочным внутри строки */
+    padding: 5px 10px; /* Внутренние отступы вокруг текста */
+    border: 1px solid #42aaff; /* Белая рамка вокруг элемента */
+    border-radius: 12px; /* Закругление углов */
+    font-weight: bold; /* Жирный шрифт */
+    color: #42aaff; /* Цвет текста */
+    background-color: transparent; /* Прозрачный фон (можно изменить на любой другой цвет) */
+    position: relative; /* Или absolute, если нужно позиционирование */
+    transition: opacity 0.5s ease; /* Плавный переход для opacity */
+    cursor: pointer; /* Курсор в виде указателя для интерактивности */
+}
+
+.rounded-border6:hover {
+    color: #00bfff; /* Изменение цвета текста при наведении */
+    border-color: #00bfff; /* Изменение цвета рамки при наведении */
+}
+
+
+.icon-links1 {
+    display: flex;
+}
+
+.icon-link1 {
+    display: inline-block;
+    position: fixed; /* Фиксированное положение */
+    top: 240px; /* Начальное положение сверху */
+    left: 565px; /* Начальное положение слева */
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px; /* Вертикальное выравнивание текста */
+    border-radius: 50%; /* Закругленные края для иконок */
+    color: #42aaff; /* Цвет иконки */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    text-decoration: none; /* Убираем подчеркивание у ссылки */
+}
+
+.icon-link1 img {
+    width: 100%; /* Иконка заполняет всю кнопку */
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; /* Закругляем изображение */
+}
+
+.icon-link1 i {
+    font-size: 24px; /* Размер иконки из Font Awesome */
+}
+
+.icon-link1:hover {
+    color: #00bfff; /* Цвет текста на кнопке при наведении */
+
+}
+
+.icon-links2 {
+    display: flex;
+}
+
+.icon-link2 {
+    display: inline-block;
+    position: fixed; /* Фиксированное положение */
+    top: 195px; /* Начальное положение сверху */
+    left: 635px; /* Начальное положение слева */
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px; /* Вертикальное выравнивание текста */
+    border-radius: 50%; /* Закругленные края для иконок */
+    color: #42aaff; /* Цвет иконки */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    text-decoration: none; /* Убираем подчеркивание у ссылки */
+}
+
+.icon-link2 img {
+    width: 100%; /* Иконка заполняет всю кнопку */
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; /* Закругляем изображение */
+}
+
+.icon-link2 i {
+    font-size: 24px; /* Размер иконки из Font Awesome */
+}
+
+.icon-link2:hover {
+    color: #00bfff; /* Цвет текста на кнопке при наведении */
+
+}
+
+.icon-links2 {
+    display: flex;
+}
+
+.icon-link3 {
+    display: inline-block;
+    position: fixed; /* Фиксированное положение */
+    top: 195px; /* Начальное положение сверху */
+    left: 945px; /* Начальное положение слева */
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px; /* Вертикальное выравнивание текста */
+    border-radius: 50%; /* Закругленные края для иконок */
+    color: #42aaff; /* Цвет иконки */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    text-decoration: none; /* Убираем подчеркивание у ссылки */
+}
+
+.icon-link3 img {
+    width: 100%; /* Иконка заполняет всю кнопку */
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; /* Закругляем изображение */
+}
+
+.icon-link3 i {
+    font-size: 24px; /* Размер иконки из Font Awesome */
+}
+
+.icon-link3:hover {
+    color: #00bfff; /* Цвет текста на кнопке при наведении */
+
+}
+
+
+   #contact .title {
+            font-size: 2.5em;
+            font-weight: 700;
+            position: absolute;
+            top: 100px;
+            left: 400px;
+            text-align: left;
+        }
+
+        #contact .subtitle {
+            font-size: 1.2em;
+            font-weight: 400;
+            opacity: 0.7;
+            position: absolute;
+            top: 150px;
+            left: 400px;
+            text-align: left;
+        }
+
+        #contact .title-form {
+            font-size: 2.5em;
+            font-weight: 700;
+            position: absolute;
+            top: 300px;
+            left: 400px;
+            text-align: left;
+        }
+
+        #contact .subtitle-form {
+            font-size: 1.2em;
+            font-weight: 400;
+            opacity: 0.7;
+            position: absolute;
+            top: 350px;
+            left: 400px;
+            text-align: left;
+        }
+
+        /* Стили для светлой темы */
+body.light-theme .rounded-border10 {
+    border: 1px solid var(--border-color-light);
+    color: var(--text-color-light-rounded);
+}
+
+/* Стили для светлой темы */
+body.light-theme .rounded-border10 {
+    border: 1px solid var(--border-color-light);
+    color: var(--text-color-light-rounded);
+}
+
+    .rounded-border10 {
+    display: inline-block; /* Делает элемент блочным внутри строки */
+    padding: 240px 190px; /* Внутренние отступы вокруг текста */
+    border: 1px solid var(--border-color-dark); /* Цвет рамки в зависимости от темы */
+    border-radius: 12px; /* Закругление углов */
+    font-weight: bold; /* Жирный шрифт */
+    color: var(--text-color-dark-rounded); /* Цвет текста в зависимости от темы */
+    background-color: transparent; /* Фон элемента (может быть изменен) */
+    position: absolute; /* Или relative, если необходимо перемещение */
+}
+
+#span20 {
+    top: 400px;
+    left: 400px;
+}
+
+
+#contact .title-nav {
+            font-size: 1em;
+            font-weight: 700;
+            position: absolute;
+            top: 420px;
+            left: 430px;
+            text-align: left;
+        }
+
+    
+body.light-theme .rounded-border11 {
+    border: 1px solid var(--border-color-light);
+    color: var(--text-color-light-rounded);
+}
+
+/* Стили для светлой темы */
+body.light-theme .rounded-border11 {
+    border: 1px solid var(--border-color-light);
+    color: var(--text-color-light-rounded);
+}
+        
+.rounded-border11 {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid var(--border-color-dark);
+    border-radius: 12px;
+    color: var(--text-color-dark-rounded);
+    background-color: transparent;
+    position: absolute;
+    cursor: pointer;
+    transition: font-weight 0.6s ease, border-width 0.6s ease;
+}
+
+#span21 {
+    top: 495px;
+    left: 425px;
+}
+
+#span22 {
+    top: 455px;
+    left: 425px;
+}
+
+#span23 {
+    top: 455px;
+    left: 570px;
+}
+
+#span24 {
+    top: 535px;
+    left: 425px;
+}
+
+#span25 {
+    top: 495px;
+    left: 545px;
+}
+
+/* Стили для светлой темы */
+body.light-theme .rounded-border12 {
+    border: 1px solid var(--border-color-light);
+    color: var(--text-color-light-rounded);
+}
+
+/* Стили для светлой темы */
+body.light-theme .rounded-border12 {
+    border: 1px solid var(--border-color-light);
+    color: var(--text-color-light-rounded);
+}
+
+.rounded-border12 {
+    display: inline-block; /* Делает элемент блочным внутри строки */
+    padding: 0px 170px; /* Внутренние отступы вокруг текста */
+    border: 1px solid var(--border-color-dark); /* Цвет рамки в зависимости от темы */
+    border-radius: 12px; /* Закругление углов */
+    font-weight: bold; /* Жирный шрифт */
+    color: var(--text-color-dark-rounded); /* Цвет текста в зависимости от темы */
+    background-color: transparent; /* Фон элемента (может быть изменен) */
+    position: absolute; /* Или relative, если необходимо перемещение */
+}
+
+#span26 {
+    top: 680px;
+    left: 420px;
+}
+
+        #contact .title-message {
+            font-size: 1em;
+            font-weight: 700;
+            position: absolute;
+            top: 610px;
+            left: 430px;
+            text-align: left;
+        }
+
+        #contact .sub-message {
+            color: silver;
+            font-size: 0.9em;
+            font-weight: 300;
+            position: absolute;
+            top: 650px;
+            left: 440px;
+            text-align: left;
+        }
+
+        #contact .con-message {
+            font-size: 1em;
+            font-weight: 700;
+            position: absolute;
+            top: 700px;
+            left: 430px;
+            text-align: left;
+        }
+
+        #contact .conn-message {
+            color: silver;
+            font-size: 0.9em;
+            font-weight: 300;
+            position: absolute;
+            top: 740px;
+            left: 440px;
+            text-align: left;
+        }
+
+        /* Стили для светлой темы */
+body.light-theme .rounded-border13 {
+    border: 1px solid var(--border-color-light);
+    color: var(--text-color-light-rounded);
+}
+
+/* Стили для светлой темы */
+body.light-theme .rounded-border13 {
+    border: 1px solid var(--border-color-light);
+    color: var(--text-color-light-rounded);
+}
+
+    .rounded-border13 {
+    display: inline-block; /* Делает элемент блочным внутри строки */
+    padding: 60px 160px; /* Внутренние отступы вокруг текста */
+    border: 1px solid var(--border-color-dark); /* Цвет рамки в зависимости от темы */
+    border-radius: 12px; /* Закругление углов */
+    font-weight: bold; /* Жирный шрифт */
+    color: var(--text-color-dark-rounded); /* Цвет текста в зависимости от темы */
+    background-color: transparent; /* Фон элемента (может быть изменен) */
+    position: absolute; /* Или relative, если необходимо перемещение */
+}
+
+#span27 {
+    top: 730px;
+    left: 430px;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle-button" onclick="toggleTheme()">
+        <img id="theme-icon" src="1.png" alt="Theme Icon" class="icon">
+    </button>
+
+    <div class="nav-container">
+        <div class="nav-left" onclick="navigateToSection(0)">atri</div>
+        <div class="nav-right" id="navRight">
+            <div class="nav-link" onclick="navigateToSection(1)" data-en="About me" data-ru="Обо мне">About me</div>
+            <div class="nav-link" onclick="navigateToSection(2)" data-en="Portfolio" data-ru="Портфолио">Portfolio</div>
+            <div class="nav-link" onclick="navigateToSection(3)" data-en="Contact" data-ru="Контакт">Contact</div> <!-- Новая вкладка -->
+        </div>
+    </div>
+    
+    <div id="home" class="section active">
+        <div>
+            <div class="title visible" data-en="Welcome to my website" data-ru="Добро пожаловать на мой сайт">Welcome to my website</div>
+            <div class="subtitle-gray visible" data-en="15 y.o. aspiring website developer & aspiring programmer." data-ru="15 лет, начинающий разработчик сайтов & начинающий программист.">15 y.o. aspiring website developer & aspiring programmer.</div>
+            <div class="subtitle-gray visible" data-en="Completely self-taught. I speak Russian and English." data-ru="Полностью самоучка. Разговариваю на русском и английском языке.">Completely self-taught. I speak Russian and English.</div>
+            <video id="dark-theme-video" autoplay loop muted playsinline>
+                <source src="dark-theme-background.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video id="light-theme-video" autoplay loop muted playsinline>
+                <source src="light-background.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div id="about" class="section inactive">
+        <div class="side-nav">
+            <div class="nav-arrow-link" onclick="navigateToSection(0)">
+                <div class="arrow"></div>
+                <span data-en="Home" data-ru="Главная">Home</span>
+            </div>
+            <div class="nav-arrow-link" onclick="navigateToSection(1)">
+                <div class="arrow"></div>
+                <span data-en="About me" data-ru="Обо мне">About me</span>
+            </div>
+            <div class="nav-arrow-link" onclick="navigateToSection(2)">
+                <div class="arrow"></div>
+                <span data-en="Portfolio" data-ru="Портфолио">Portfolio</span>
+            </div>
+            <div class="nav-arrow-link" onclick="navigateToSection(3)">
+                <div class="arrow"></div>
+                <span data-en="Contact" data-ru="Контакт">Contact</span>
+            </div>
+        </div>
+        <div>
+            <div class="title" data-en="About me" data-ru="Обо мне">About me</div>
+            <div class="subtitle" data-en="15 y.o. aspiring website developer and aspiring programmer.<br>Completely self-taught. I speak Russian and English.<br>Started my work in coding 1-2 months ago." data-ru="15 лет, начинающий разработчик сайтов и начинающий программист.<br>Полностью самоучка. Владею русским и английским языками.<br>Начал свою работу в кодинке 1-2 месяца назад.">15 y.o. aspiring website developer and aspiring programmer.<br>Completely self-taught. I speak Russian and English.<br>Started my work in coding 1-2 months ago.</div>
+            <div class="studying-title visible" data-en="Studying" data-ru="Изучаю">Studying</div>
+            <div class="studying-text visible" data-en="I try to learn everything on my own. Internet videos<br>and various sources help me." data-ru="Стараюсь изучать все самостоятельно. В помощь мне<br>интернет видео и разные источники.">I try to learn everything on my own. Internet videos<br>and various sources help me.</div>
+            <div class="software-title visible" data-en="The software I'm using" data-ru="Программное обеспечение">The software I'm using</div>
+            <div class="software-text visible" data-en="I use a variety of software for teaching,<br>including regular programs and platforms." data-ru="Я использую разные программные обеспечения для обучения,<br>включая обыкновенные программы и платформы.">I use a variety of software for teaching,<br>including regular programs and platforms.</div>
+            <img src="picture1.jpg" alt="My Photos" id="my-photos">
+            <img src="icon2.ico" alt="My Photoos" id="my-photoos">
+            <div class="container">
+                <span class="rounded-border" id="span1">Python</span>
+                <span class="rounded-border" id="span2">JavaScript</span>
+                <span class="rounded-border" id="span3">HTML</span>
+                <span class="rounded-border" id="span4">CSS</span>
+                <span class="rounded-border" id="span5">Figma</span>
+                <span class="rounded-border" id="span6">PyCharm</span>
+                <span class="rounded-border" id="span7">Davinci Resolve</span>
+                <span class="rounded-border" id="span8">Photoshop</span>
+                <span class="rounded-border" id="span9">Godot</span>
+                <span class="rounded-border" id="span10">ChatGPT</span>
+                <span class="rounded-border" id="span11">After Effects</span>
+                <span class="rounded-border" id="span12">OBS Studio</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="portfolio" class="section inactive">
+        <div class="side-nav">
+            <div class="nav-arrow-link" onclick="navigateToSection(0)">
+                <div class="arrow"></div>
+                <span data-en="Home" data-ru="Главная">Home</span>
+            </div>
+            <div class="nav-arrow-link" onclick="navigateToSection(1)">
+                <div class="arrow"></div>
+                <span data-en="About me" data-ru="Обо мне">About me</span>
+            </div>
+            <div class="nav-arrow-link" onclick="navigateToSection(2)">
+                <div class="arrow"></div>
+                <span data-en="Portfolio" data-ru="Портфолио">Portfolio</span>
+            </div>
+            <div class="nav-arrow-link" onclick="navigateToSection(3)">
+                <div class="arrow"></div>
+                <span data-en="Contact" data-ru="Контакт">Contact</span>
+            </div>
+        </div>
+        <div>
+            <div class="title" data-en="Portfolio" data-ru="Портфолио">Portfolio</div>
+            <div class="subtitle" data-en="This site is my main and primary project." data-ru="Этот сайт и есть мой главный и основной проект.">This site is my main and primary project.</div>
+            <div class="portfolio-container">
+                <div class="portfolio-item active" id="item1">
+                    <img src="screenshot1.png" alt="Screenshot 1">
+                    <div class="concept-title" data-en="Concept" data-ru="Концепт">Concept</div>
+                    <div class="concept-text" data-en="Created a concept for my website" data-ru="Создал концепт своего сайта.">Created a concept for my website.</div>
+                    <span class="rounded-border1" id="span13">Paint 3D</span>
+                </div>
+                <div class="portfolio-item" id="item2">
+                    <img src="screenshot2.png" alt="Screenshot 2">
+                    <div class="cod-title" data-en="Coding" data-ru="Кодинг">Coding</div>
+                    <div class="cod-text" data-en="Wrote the code for my website." data-ru="Написал код для своего сайта.">Wrote the code for my website.</div>
+                    <span class="rounded-border2" id="span14">Visual Studio Code</span>
+                    <span class="rounded-border2" id="span15">Pycharm</span>
+                </div>
+                <div class="portfolio-item" id="item3">
+                    <img src="screenshot3.png" alt="Screenshot 3">
+                    <div class="ready-title" data-en="Completely finished website" data-ru="Полностью готовый сайт">Completely finished website</div>
+                    <div class="ready-text" data-en="A fully working and finished project." data-ru="Полностью рабочий и готовый проект.">A fully working and finished project.</div>
+                    <span class="rounded-border3" id="span16">Opera</span>
+                    <span class="rounded-border3" id="span17">Chrome</span>
+                    <span class="rounded-border3" id="span18">Microsoft Edge</span>
+                </div>            
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="section inactive">
+        <div class="side-nav">
+            <div class="nav-arrow-link" onclick="navigateToSection(0)">
+                <div class="arrow"></div>
+                <span data-en="Home" data-ru="Главная">Home</span>
+            </div>
+            <div class="nav-arrow-link" onclick="navigateToSection(1)">
+                <div class="arrow"></div>
+                <span data-en="About me" data-ru="Обо мне">About me</span>
+            </div>
+            <div class="nav-arrow-link" onclick="navigateToSection(2)">
+                <div class="arrow"></div>
+                <span data-en="Portfolio" data-ru="Портфолио">Portfolio</span>
+            </div>
+            <div class="nav-arrow-link" onclick="navigateToSection(3)">
+                <div class="arrow"></div>
+                <span data-en="Contact" data-ru="Контакт">Contact</span>
+            </div>
+        </div>
+        <div>
+            <div class="title" data-en="Contacts" data-ru="Контакты">Contacts</div>
+            <div class="subtitle" data-en="You can contact me and ask me various questions you may have." data-ru="Вы можете связаться со мной и задать интересующие вас вопросы.">You can contact me and ask me various questions you may have.</div>
+            <div class="title-form" data-en="Form" data-ru="Пример">Form</div>
+            <div class="subtitle-form" data-en="You can use this form to contact me." data-ru="">You can use this form to contact me.</div>
+            <p><span class="rounded-border4" data-url="mailto:atri.website@hotmail.com">atri.website@hotmail.com</span></p>
+            <p><span class="rounded-border5" data-url="tg://resolve?domain=atri_website">t.me/atri_website</span></p>
+            <p><span class="rounded-border6" data-url="https://steamcommunity.com/id/Atrityn">https://steam.com/Atrityn</span></p>
+        </div>
+        <div class="icon-links1">
+            <a href="tg://resolve?domain=atri_website" class="icon-link1" target="_blank">
+                <img src="15.png" alt="Icon 1">
+            </a>
+        </div>
+        <div class="icon-links2">
+            <a href="mailto:atri.website@hotmail.com" class="icon-link2" target="_blank">
+                <img src="16.png" alt="Icon 1">
+            </a>
+        </div>
+        <div class="icon-links3">
+            <a href="https://steamcommunity.com/id/Atrityn" class="icon-link3" target="_blank">
+                <img src="17.png" alt="Icon 1">
+            </a>
+        </div>
+        <span class="rounded-border10" id="span20"></span>
+        <div class="title-nav" data-en="I'm interested in your project" data-ru="Мне интересно в твоем проекте">I'm interested in your project</div>
+        <span class="rounded-border11" id="span21">Web design</span>
+        <span class="rounded-border11" id="span22">Graphic design</span>
+        <span class="rounded-border11" id="span23">Fronted</span>
+        <span class="rounded-border11" id="span24">Backend</span>
+        <span class="rounded-border11" id="span25">Other</span>
+        <span class="rounded-border12" id="span26"></span>
+        <div class="title-message" data-en="Name" data-ru="Имя">Name</div>
+        <div class="sub-message" data-en="Your name" data-ru="Твое имя">Your name</div>
+        <div class="con-message" data-en="Message" data-ru="Сообщение">Message</div>
+        <span class="rounded-border13" id="span27"></span>
+        <div class="conn-message" data-en="Hello, I am interested in your design<br>from the project..." data-ru="Здравствуйте, мне интересно ваш дизайн из проекта...">Hello, I am interested in your design<br>from the project...</div>
+        <img src="picture2.jpg" alt="My Photo" id="my-photo">
+    </div>
+</div>
+
+    <script>
+let currentSection = 0;
+let isEnglish = true;
+
+function navigateToSection(index) {
+    const sections = document.querySelectorAll('.section');
+    const navRight = document.getElementById('navRight');
+
+    if (index === 0) {
+        navRight.classList.remove('hidden');
+    } else {
+        navRight.classList.add('hidden');
+    }
+
+    sections[currentSection].classList.remove('active');
+    sections[currentSection].classList.add('inactive');
+    sections[index].classList.remove('inactive');
+    sections[index].classList.add('active');
+    currentSection = index;
+
+    const titles = sections[index].querySelectorAll('.title, .subtitle, .text-block');
+    titles.forEach(title => title.classList.add('visible'));
+
+    // Обновите заголовок страницы в зависимости от текущей секции
+    const sectionTitles = ['Home', 'About me', 'Portfolio', 'Contact']; // Добавьте "Contact"
+    document.title = sectionTitles[index];
+}
+
+// Существующий код для обработки наведения на элементы портфолио
+document.querySelectorAll('.portfolio-item').forEach(item => {
+    item.addEventListener('mouseover', () => {
+        document.querySelectorAll('.portfolio-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+    });
+});
+
+
+
+        function toggleTheme() {
+    document.body.classList.toggle('light-theme');
+
+    const darkVideo = document.getElementById('dark-theme-video');
+    const lightVideo = document.getElementById('light-theme-video');
+
+    if (document.body.classList.contains('light-theme')) {
+        darkVideo.style.opacity = '0';
+        setTimeout(() => darkVideo.style.display = 'none', 800); // Скрываем видео через 0.8 секунд
+        lightVideo.style.display = 'block';
+        setTimeout(() => lightVideo.style.opacity = '1', 0); // Плавное появление видео
+    } else {
+        lightVideo.style.opacity = '0';
+        setTimeout(() => lightVideo.style.display = 'none', 800);
+        darkVideo.style.display = 'block';
+        setTimeout(() => darkVideo.style.opacity = '1', 0);
+    }
+}
+
+        function toggleLanguage() {
+            isEnglish = !isEnglish;
+            translatePage(isEnglish);
+        }
+
+        function translatePage(isEnglish) {
+    const elements = document.querySelectorAll('[data-en]');
+
+    elements.forEach(el => {
+        el.style.transition = 'opacity 0.5s';
+        el.style.opacity = 0;
+
+        setTimeout(() => {
+            const text = isEnglish ? el.getAttribute('data-en') : el.getAttribute('data-ru');
+            el.innerHTML = text; // Используйте innerHTML вместо textContent
+
+            el.style.opacity = 1;
+        }, 500);
+    });
+
+    document.getElementById('language-icon').src = isEnglish ? '3.png' : '4.png';
+}
+
+
+window.addEventListener('wheel', (event) => {
+    if (event.deltaY > 0 && currentSection < 3) {
+        navigateToSection(currentSection + 1);
+    } else if (event.deltaY < 0 && currentSection > 0) {
+        navigateToSection(currentSection - 1);
+    }
+});
+
+        document.querySelectorAll('.screenshot').forEach((screenshot) => {
+    screenshot.addEventListener('click', function() {
+        // Убираем класс active со всех скриншотов
+        document.querySelectorAll('.screenshot').forEach((img) => {
+            img.classList.remove('active');
+        });
+        // Добавляем класс active к текущему скриншоту
+        this.classList.add('active');
+
+        // Получаем ID текущего скриншота
+        const id = this.getAttribute('data-id');
+
+        // Скрываем все контенты
+        document.querySelectorAll('.content-item').forEach((item) => {
+            item.classList.remove('active');
+        });
+
+        // Отображаем контент для выбранного скриншота
+        document.getElementById('content-' + id).classList.add('active');
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+            // Функция для добавления обработчика клика на элемент
+            function addClickHandler(className) {
+                const element = document.querySelector(`.${className}`);
+                
+                if (element) {
+                    element.addEventListener('click', () => {
+                        if (className === 'rounded-border11') {
+                            // Обработка изменения цвета для элемента с классом 'rounded-border11'
+                            element.classList.toggle('active');
+                        } else {
+                            // Переход по URL для остальных элементов
+                            const url = element.getAttribute('data-url');
+                            if (url) {
+                                window.location.href = url;
+                            }
+                        }
+                    });
+                }
+            }
+
+            // Добавляем обработчики для всех элементов
+            addClickHandler('rounded-border4');
+            addClickHandler('rounded-border5');
+            addClickHandler('rounded-border6');
+            addClickHandler('rounded-border11');
+        });
+
+        document.addEventListener('copy', function(e) {
+    e.preventDefault(); // Запрет копирования текста
+});
+
+document.addEventListener('dragstart', function(e) {
+    e.preventDefault(); // Запрет перетаскивания
+});
+
+    </script>
+</body>
+
+</html>
